@@ -19,7 +19,7 @@ abstract class BaseRequest {
 	public function getParameters() {
 		$filledvars = array();
 		foreach (get_object_vars($this) as $name => $value) {
-			if ($value) {
+			if (!is_null($value)) {
                 if($value instanceof BaseDataObject && !empty($value->getParameters())){
                     $filledvars[$name] = $value->getParameters();
                 } else {
